@@ -1,0 +1,7 @@
+Name: Sintoacct.Easyui
+Author: volcanodeng
+Website: http://www.sintoacct.net
+Description: Easyui theme for business system
+Version: 1.0
+# todo: provide tags
+# Tags: Classic, Serif

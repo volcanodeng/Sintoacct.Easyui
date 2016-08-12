@@ -1,0 +1,36 @@
+﻿@using Orchard.UI.Resources;
+@using Orchard.ContentManagement;
+@{
+    SetMeta(httpEquiv: "X-UA-Compatible", content: "IE=edge,chrome=1");
+    Style.Include("site.css");
+    Script.Include("jquery.easyui.min.js");
+    Script.Include("easyui-lang-zh_CN.js");
+    Script.Include("easyui.extend.js");
+    WorkContext.Layout.Header.Add(New.User(), "10");
+
+    Func<dynamic, dynamic> Zone = x => Display(x);
+}
+
+<div id="layout-wrapper" class="easyui-layout" data-options="fit:true">  
+      <div data-options="region:'north'" style="height:100px;">
+        @if (Model.Header != null)
+        {
+            <header id="layout-header" class="group">
+                <div id="header">
+                    @Zone(Model.Header)
+                </div>
+            </header>
+        }
+
+          @if (Model.Navigation != null)
+          {
+              <div id="layout-navigation" class="group">
+                  @Zone(Model.Navigation)
+              </div>
+          }
+      </div> 
+       <div data-options="region:'south'" style="height:100px;"></div>
+        <div data-options="region:'east'" style="width:100px;"></div>   
+     <div data-options="region:'west'" style="width:100px;"></div>  
+      <div data-options="region:'center'" style="padding:5px;background:#eee;"></div>
+</div>
