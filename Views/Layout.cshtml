@@ -3,6 +3,7 @@
 @{
     SetMeta(httpEquiv: "X-UA-Compatible", content: "IE=edge,chrome=1");
     Style.Include("site.css");
+    Style.Include("easyui.css");
     Script.Require("jQuery");
     Script.Include("jquery.easyui.min.js");
     Script.Include("easyui-lang-zh_CN.js");
@@ -13,7 +14,7 @@
 }
 
 <div id="layout-wrapper" class="easyui-layout" data-options="fit:true">  
-      <div data-options="region:'north'" style="height:100px;">
+      <div data-options="region:'north'" style="height:200px;">
         @if (Model.Header != null)
         {
             <header id="layout-header" class="group">
@@ -33,5 +34,12 @@
        <div data-options="region:'south'" style="height:100px;"></div>
         <div data-options="region:'east'" style="width:100px;"></div>   
      <div data-options="region:'west'" style="width:100px;"></div>  
-      <div data-options="region:'center'" style="padding:5px;background:#eee;"></div>
+      <div data-options="region:'center'" style="padding:5px;background:#eee;">
+          @if (Model.Content != null)
+          {
+              <div id="content" class="group">
+                  @Zone(Model.Content)
+              </div>
+          }
+      </div>
 </div>

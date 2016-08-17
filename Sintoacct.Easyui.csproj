@@ -108,6 +108,7 @@
     <Content Include="Scripts\easyui.extend.js" />
     <Content Include="Scripts\jquery.easyui.min.js" />
     <Content Include="Scripts\Web.config" />
+    <Content Include="Styles\Easyui.css" />
     <Content Include="Styles\images\accordion_arrows.png" />
     <Content Include="Styles\images\blank.gif" />
     <Content Include="Styles\images\calendar_arrows.png" />
