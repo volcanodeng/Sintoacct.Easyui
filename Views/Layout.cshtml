@@ -4,6 +4,7 @@
     SetMeta(httpEquiv: "X-UA-Compatible", content: "IE=edge,chrome=1");
     Style.Include("site.css");
     Style.Include("easyui.css");
+    Style.Include("icon.css");
     Script.Require("jQuery");
     Script.Include("jquery.easyui.min.js");
     Script.Include("easyui-lang-zh_CN.js");
@@ -14,7 +15,7 @@
 }
 
 <div id="layout-wrapper" class="easyui-layout" data-options="fit:true">  
-      <div data-options="region:'north'" style="height:200px;">
+      <div data-options="region:'north'" style="height:auto;">
         @if (Model.Header != null)
         {
             <header id="layout-header" class="group">
@@ -24,16 +25,56 @@
             </header>
         }
 
-          @if (Model.Navigation != null)
-          {
-              <div id="layout-navigation" class="group">
-                  @Zone(Model.Navigation)
-              </div>
-          }
+          
       </div> 
-       <div data-options="region:'south'" style="height:100px;"></div>
-        <div data-options="region:'east'" style="width:100px;"></div>   
-     <div data-options="region:'west'" style="width:100px;"></div>  
+       
+           
+     <div data-options="region:'west'" style="width:120px;">
+@if (Model.Navigation != null)
+{
+    <div id="layout-navigation" class="group">
+        @Zone(Model.Navigation)
+    </div>
+}
+         <div class="easyui-menu" data-options="inline:true,fit:true">
+             <div data-options="iconCls:'icon-edit'" style="font-weight:bolder;">录凭证</div>
+             <div data-options="iconCls:'icon-search'" style="font-weight:bolder;">查凭证</div>
+             <div data-options="iconCls:'icon-large-shapes'" style="font-weight:bolder;">
+                 <span>帐簿</span>
+                 <div>
+                     <div>明细账</div>
+                     <div>总账</div>
+                     <div>凭证汇总表</div>
+                     <div>科目余额表</div>
+                     <div>数量金额明细账</div>
+                     <div>数量金额总账</div>
+                     <div>多栏账</div>
+                     <div>核算项目余额表</div>
+                     <div>核算项目明细表</div>
+                 </div>
+             </div>
+             <div data-options="iconCls:'icon-large-chart'" style="font-weight:bolder;">
+                 <span>报表</span>
+                 <div>
+                     <div>资产负债表</div>
+                     <div>利润表</div>
+                     <div>现金流量表</div>
+                 </div>
+             </div>
+             <div data-options="iconCls:'icon-sum'" style="font-weight:bolder;">结账</div>
+             <div data-options="iconCls:'icon-large-smartart'" style="font-weight:bolder;">
+                 <span>设置</span>
+                 <div>
+                     <div>凭证字</div>
+                     <div>辅助核算</div>
+                     <div>科目</div>
+                     <div>财务初始余额</div>
+                     <div>凭证模板</div>
+                 </div>
+             </div>
+         </div>
+     </div>  
+
       <div data-options="region:'center'" style="padding:5px;background:#eee;">
           @if (Model.Content != null)
           {
@@ -42,4 +83,7 @@
               </div>
           }
       </div>
+
+
+    <div data-options="region:'south'" style="height:auto;"></div>
 </div>
