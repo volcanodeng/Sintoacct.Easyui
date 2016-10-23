@@ -49,9 +49,11 @@
     </Reference>
     <Reference Include="Orchard.Core">
       <HintPath>..\..\bin\Orchard.Core.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Orchard.Framework">
       <HintPath>..\..\bin\Orchard.Framework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -91,13 +93,9 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
-    <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets.json" />
-    <Content Include="Assets\Styles.less" />
-    <Content Include="Content\Web.config" />
-    <Content Include="Placement.info" />
     <Content Include="Scripts\easyui-lang-zh_CN.js" />
     <Content Include="Scripts\easyui.extend.js" />
     <Content Include="Scripts\jquery.easyui.min.js" />
