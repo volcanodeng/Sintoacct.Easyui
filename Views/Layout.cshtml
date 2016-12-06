@@ -2,14 +2,10 @@
 @using Orchard.ContentManagement;
 @{
     SetMeta(httpEquiv: "X-UA-Compatible", content: "IE=edge,chrome=1");
-    Style.Include("site.css");
-    Style.Include("easyui.css");
-    Style.Include("icon.css");
-    Script.Require("jQuery");
-    Script.Include("jquery.easyui.min.js");
-    Script.Include("easyui-lang-zh_CN.js");
-    Script.Include("easyui.extend.js");
-    Script.Include("common.js");
+    Script.Require("Easyui");
+    Style.Require("site");
+    Style.Require("Easyui");
+    Style.Require("Easyui.icon");
     WorkContext.Layout.Header.Add(New.User(), "10");
 
     Func<dynamic, dynamic> Zone = x => Display(x);
@@ -91,67 +87,7 @@
       </div>
 
 
-
-
-
     <div data-options="region:'south'" style="height:auto;"></div>
 </div>
 
 
-<script type="text/javascript">
-    function AddTabContent(title,content)
-    {
-        if ($("#tab_wrapper").tabs("exists", title)) {
-            $("#tab_wrapper").tabs("select", title);
-            return;
-        }
-
-        $("#tab_wrapper").tabs('add', {
-            title: title,
-            content: content,
-            closable: true,
-            selected: true
-        });
-    }
-
-    function AddTabHref(title, href) {
-
-        if ($("#tab_wrapper").tabs("exists", title))
-        {
-            $("#tab_wrapper").tabs("select", title);
-            return;
-        }
-
-        $("#tab_wrapper").tabs('add', {
-            title: title,
-            href:href,
-            closable: true,
-            selected: true
-        });
-        
-    }
-
-    function AddTabIframe(title, href) {
-
-        if ($("#tab_wrapper").tabs("exists", title)) {
-            $("#tab_wrapper").tabs("select", title);
-            return;
-        }
-
-        $("#tab_wrapper").tabs('add', {
-            title: title,
-            content: '<iframe scrolling="yes" frameborder="0"  src="' + href + '" style="width:100%;height:100%;"></iframe>',
-            closable: true,
-            selected: true
-        });
-
-    }
-
-    function removePanel() {
-        var tab = $('#tab_wrapper').tabs('getSelected');
-        if (tab) {
-            var index = $('#tab_wrapper').tabs('getTabIndex', tab);
-            $('#tab_wrapper').tabs('close', index);
-        }
-    }
-</script>
