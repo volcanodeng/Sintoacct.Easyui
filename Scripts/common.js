@@ -65,6 +65,11 @@ function formSuccessHandle(data)
         $.messager.alert("保存", data.message, "warning");
         return false;
     }
+    else if (data.exceptionMessage != null)
+    {
+        $.messager.alert("保存", data.exceptionMessage, "warning");
+        return false;
+    }
     else {
         $.messager.show({ title: "保存", msg: "保存成功" });
         return true;
