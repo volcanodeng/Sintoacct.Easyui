@@ -43,6 +43,8 @@ function AddTabIframe(title, href) {
         selected: true
     });
 
+    //隐藏tab滚动条避免多重滚动条
+    $(".tabs-panels .panel-body").css({"overflow":"hidden"});
 }
 
 function removePanel() {
