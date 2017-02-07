@@ -77,3 +77,57 @@ function formSuccessHandle(data)
         return true;
     }
 }
+
+
+
+/**
+ * Easyui Datagrid Row Editing
+ */
+
+var easyuiVar = {
+    editIndex: undefined,
+    dg: undefined
+}
+
+
+//var editIndex = undefined;
+function endEditing() {
+    if (easyuiVar.editIndex == undefined) { return true }
+    if (easyuiVar.dg.datagrid('validateRow', easyuiVar.editIndex)) {
+        //自定义的赋值函数
+        if (typeof (fieldSettingFun) == "function") fieldSettingFun(easyuiVar.editIndex, easyuiVar.dg);
+
+        easyuiVar.dg.datagrid('endEdit', easyuiVar.editIndex);
+        easyuiVar.editIndex = undefined;
+        return true;
+    } else {
+        return false;
+    }
+}
+function onClickCell(index, field) {
+    easyuiVar.dg = $(this);
+    if (easyuiVar.editIndex != index) {
+        if (endEditing()) {
+            easyuiVar.dg.datagrid('selectRow', index)
+                .datagrid('beginEdit', index);
+            var ed = easyuiVar.dg.datagrid('getEditor', { index: index, field: field });
+            if (ed) {
+                ($(ed.target).data('textbox') ? $(ed.target).textbox('textbox') : $(ed.target)).focus();
+            }
+            easyuiVar.editIndex = index;
+        } else {
+            easyuiVar.dg.datagrid('selectRow', easyuiVar.editIndex);
+        }
+    }
+}
+
+
+// extend the 'mobile' rule
+$.extend($.fn.validatebox.defaults.rules, {
+    mobile: {
+        validator: function (value, param) {
+            return (/^1[3|4|5|7|8]\d{9}$/g).test(value);
+        },
+        message: '手机号码无效。'
+    }
+});
