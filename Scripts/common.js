@@ -90,7 +90,6 @@ var easyuiVar = {
 }
 
 
-//var editIndex = undefined;
 function endEditing() {
     if (easyuiVar.editIndex == undefined) { return true }
     if (easyuiVar.dg.datagrid('validateRow', easyuiVar.editIndex)) {
@@ -108,11 +107,12 @@ function onClickCell(index, field) {
     easyuiVar.dg = $(this);
     if (easyuiVar.editIndex != index) {
         if (endEditing()) {
-            easyuiVar.dg.datagrid('selectRow', index)
-                .datagrid('beginEdit', index);
+            easyuiVar.dg.datagrid('selectRow', index).datagrid('beginEdit', index);
+
             var ed = easyuiVar.dg.datagrid('getEditor', { index: index, field: field });
             if (ed) {
                 ($(ed.target).data('textbox') ? $(ed.target).textbox('textbox') : $(ed.target)).focus();
+                ($(ed.target).data('textbox') ? $(ed.target).textbox('textbox') : $(ed.target)).select();
             }
             easyuiVar.editIndex = index;
         } else {
@@ -121,13 +121,3 @@ function onClickCell(index, field) {
     }
 }
 
-
-// extend the 'mobile' rule
-$.extend($.fn.validatebox.defaults.rules, {
-    mobile: {
-        validator: function (value, param) {
-            return (/^1[3|4|5|7|8]\d{9}$/g).test(value);
-        },
-        message: '手机号码无效。'
-    }
-});
