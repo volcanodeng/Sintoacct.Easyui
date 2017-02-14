@@ -104,7 +104,7 @@ function endEditing() {
     }
 }
 function onClickCell(index, field) {
-    easyuiVar.dg = $(this);
+    if (!easyuiVar.dg) easyuiVar.dg = $(this);
     if (easyuiVar.editIndex != index) {
         if (endEditing()) {
             easyuiVar.dg.datagrid('selectRow', index).datagrid('beginEdit', index);
