@@ -108,8 +108,8 @@ function onClickCell(index, field) {
     easyuiVar.dg = $(this);
     if (easyuiVar.editIndex != index) {
         if (endEditing()) {
-            easyuiVar.dg.datagrid('selectRow', index)
-                .datagrid('beginEdit', index);
+            easyuiVar.dg.datagrid('selectRow', index).datagrid('beginEdit', index);
+
             var ed = easyuiVar.dg.datagrid('getEditor', { index: index, field: field });
             if (ed) {
                 ($(ed.target).data('textbox') ? $(ed.target).textbox('textbox') : $(ed.target)).focus();
